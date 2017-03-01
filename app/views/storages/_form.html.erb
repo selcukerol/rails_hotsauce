@@ -1,0 +1,27 @@
+<%= form_for(storage) do |f| %>
+  <% if storage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(storage.errors.count, "error") %> prohibited this storage from being saved:</h2>
+
+      <ul>
+      <% storage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :max_capacity %>
+    <%= f.number_field :max_capacity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cur_capacity %>
+    <%= f.number_field :cur_capacity %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount_of_item: 1
+  cost: 9.99
+  user: one
+
+two:
+  amount_of_item: 1
+  cost: 9.99
+  user: two
