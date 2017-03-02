@@ -6,19 +6,11 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
   	devise_parameter_sanitizer.permit(:sign_up, keys:[:name_first, :name_last, :username])
-  end
-
-  def after_sign_in_path_for(resource_or_scope)
-  # your_path
+  	devise_parameter_sanitizer.permit(:account_update, keys:[:name_first, :name_last, :username])
   end
 
   protect_from_forgery with: :exception
   end
 
-  private 
-
-  def after_sign_out_path_for(resource)
-    request.referrer || root_path
-  end
 
 

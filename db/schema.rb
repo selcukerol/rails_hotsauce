@@ -10,30 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301165742) do
-
-  create_table "inventories", force: :cascade do |t|
-    t.integer  "no_item"
-    t.integer  "item_id"
-    t.integer  "storage_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_inventories_on_item_id"
-    t.index ["storage_id"], name: "index_inventories_on_storage_id"
-  end
+ActiveRecord::Schema.define(version: 20170301164320) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.decimal  "cost"
+    t.string   "no_item"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
+    t.integer  "number_of_items"
     t.integer  "order_id"
     t.integer  "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["item_id"], name: "index_order_items_on_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
@@ -45,13 +37,6 @@ ActiveRecord::Schema.define(version: 20170301165742) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "storages", force: :cascade do |t|
-    t.integer  "max_capacity"
-    t.integer  "cur_capacity"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
