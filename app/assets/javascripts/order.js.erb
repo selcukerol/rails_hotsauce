@@ -1,0 +1,15 @@
+var images = <%= Item.all.reduce({}) do |hash,item| 
+	hash[item.id] = item.image.url
+	hash
+end.to_json  %>;
+
+$(document).ready(function(){
+	// when we change the #item dropdown
+	$('#item').change(function(event){
+		// we want to update the #image
+		// to be the src of the selected
+		var item_id = event.target.value;
+		$('#image').attr('src',images[item_id]);
+
+	});
+});

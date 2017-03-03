@@ -25,12 +25,13 @@
     padding-top: 10px;
     padding-bottom: 20px;
     padding-left: 20px;
-    padding-right: 20px;
+    margin-left: 450px;
     border-radius: 15px;
     border-color:#d2d2d2;
     border-width: 5px;
     box-shadow:0 1px 0 #cfcfcf;
     color: black;
+    width: 20%;
 }
 
 h4 { 
@@ -68,4 +69,10 @@ img {
     padding: 5px;
     width: 800px;
     margin-left: 300px;
+}
+
+#image {
+	width: 500px;
+	margin-top: 50px;
+	border: 1px solid black;
 }

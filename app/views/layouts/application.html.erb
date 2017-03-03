@@ -11,6 +11,7 @@
 <body>
 	<nav class="navbar navbar-inverse">
 		<ul class="nav navbar-nav">
+		<li><%= link_to 'HOME', root_path%></li>
 		<% if current_user && current_user.admin %>
 		<li><a href="/orders">View Orders</a></li>
 		<% end %>

@@ -15,7 +15,7 @@
 
 <div class="form-order">
   <%= label_tag :item, "Item (cost/lb)" %>
-  <%= select_tag :item, options_from_collection_for_select(@items, "id", "label") %>
+  <%= select_tag :item, options_from_collection_for_select(@items, "id", "label"), include_blank: true %>
 </div>
 
 <div class="form-order">
@@ -26,6 +26,8 @@
 <div class="wrapper">  
 <%= f.submit class: "btn btn-primary btn-md", value: "SAVE ORDER"%>
 </div>
+
+<img id="image" src="/images/order.jpg"></img>
 
 <% end %>
 </div>
