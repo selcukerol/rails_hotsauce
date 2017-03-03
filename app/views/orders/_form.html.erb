@@ -16,6 +16,8 @@
 <div class="form-order">
   <%= label_tag :item, "Item (cost/lb)" %>
   <%= select_tag :item, options_from_collection_for_select(@items, "id", "label") %>
+
+  <img id="image" />
 </div>
 
 <div class="form-order">
