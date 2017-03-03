@@ -10,5 +10,9 @@
   <%= @item.cost %>
 </p>
 
+<p>
+  <%= image_tag @item.image.url( :medium) %>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

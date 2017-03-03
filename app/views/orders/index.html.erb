@@ -6,9 +6,10 @@
   <thead>
     <tr>
       <th>Order_id</th>
-      <th>Amount of item</th>
-      <th>Cost</th>
-      <th>User</th>
+      <th>Amount of item (lb)</th>
+      <th>Cost (USD)</th>
+      <th>Order Status</th>
+      <th>Username</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,13 +17,14 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.id %></td>
-        <td><%= order.amount_of_item %></td>
-        <td><%= order.cost %></td>
-        <td><%= order.user.username %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= order.id if current_user.admin?%></td>
+        <td><%= order.amount_of_item if current_user.admin? %></td>
+        <td><%= order.cost  if current_user.admin?%></td>
+        <td>Received</td>
+        <td><%= order.user.username  if current_user.admin?%></td>
+        <td><%= link_to 'Show', order, class: "btn btn-primary btn-md" if current_user.admin?%></td>
+        <td><%= link_to 'Edit', edit_order_path(order), class: "btn btn-primary btn-md" if current_user.admin?%></td>
+        <td><%= link_to 'Destroy', order, class: "btn btn-primary btn-md", method: :delete, data: { confirm: 'Are you sure?' } if current_user.admin?%></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,6 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order', new_order_path, class: "btn btn-primary btn-md" %>
+
+

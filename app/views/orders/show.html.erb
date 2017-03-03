@@ -1,14 +1,21 @@
 <table>
 	<tr>
-		<th>Order Id</th>
-		<th>Amount of item</th>
-		<th>Cost</th>
-		<th>Username</th>
+		<th>Order_id</th>
+	      <th>Amount of item (lb)</th>
+	      <th>Cost (USD)</th>
+	      <th>Username</th>
+	      <th>Order Status</th>
+	      <th>Action</th>
+	      <th>Action</th>
 	</tr>
 	<tr>
 		<td><%= @order.id %></a></td>
 		<td><%= @order.amount_of_item %></td>
 		<td><%= @order.cost %></td>
 		<td><%= @order.user.username %></td>
+		<th>Received</th>
+        <td><%= link_to 'Edit', edit_order_path(@order), class: "btn btn-primary btn-md" if @order.user_id == current_user.id%></td>
+        <td><%= link_to 'Destroy', @order, class: "btn btn-primary btn-md", method: :delete, data: { confirm: 'Are you sure?' } if @order.user_id == current_user.id%></td>
 	</tr>
 </table> 
+

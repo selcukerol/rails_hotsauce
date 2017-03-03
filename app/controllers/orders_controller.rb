@@ -20,13 +20,26 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @items = Item.all
   end
 
   # POST /orders
   # POST /orders.json
   def create
     @items = Item.all
-    @order = Order.new(order_params)
+    Order.transaction do
+      item = Item.find(params[:item])
+    @order = Order.create(
+      user_id: current_user.id,
+      cost: params[:order][:amount_of_item].to_i * item.cost,
+      amount_of_item: params[:order][:amount_of_item]
+      )
+    orderItem = OrderItem.create(
+      item_id: item.id,
+      number_of_items: params[:order][:amount_of_item],
+      order_id: @order.id
+      )
+  end
 
     respond_to do |format|
       if @order.save

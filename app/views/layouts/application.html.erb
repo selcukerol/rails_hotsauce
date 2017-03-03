@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hotsauce</title>
-    <%= csrf_meta_tags %>
+<head>
+	<title>Hotsauce</title>
+	<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete if current_user%>
-    <%= yield %>
-  </body>
+<body>
+	<nav class="navbar navbar-inverse">
+		<ul class="nav navbar-nav">
+		<% if current_user && current_user.admin %>
+		<li><a href="/orders">View Orders</a></li>
+		<% end %>
+			<% if current_user %>
+			<li><%= link_to 'Edit Profile', edit_user_registration_path if current_user %></li>
+			<li><a href="/orders/new">Create Order</a></li>
+			<li><a href="/items">View Products</a></li>
+			<li><%= link_to "Logout", destroy_user_session_path, method: :delete if current_user%></li>
+			<% end %>
+			<% unless current_user %>
+			<li><%= link_to 'LOGIN', new_user_session_path%></li>
+			<li><%= link_to 'SIGNUP', new_user_registration_path %></li>
+			<% end %>
+		</ul>	
+	</nav> 
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+	<%= yield %>
+</body>
 </html>

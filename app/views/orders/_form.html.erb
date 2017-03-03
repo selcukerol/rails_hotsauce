@@ -1,3 +1,4 @@
+<div class ="container">
 <%= form_for(order) do |f| %>
 <% if order.errors.any? %>
 <div id="error_explanation">
@@ -11,42 +12,23 @@
 </div>
 <% end %>
 
-<div class="field">
-  <%= f.label :amount_of_item %>
+
+<div class="form-order">
+  <%= label_tag :item, "Item (cost/lb)" %>
+  <%= select_tag :item, options_from_collection_for_select(@items, "id", "label") %>
+</div>
+
+<div class="form-order">
+  <%= f.label :amount_of_item, "Amount of item (lb)"%>
   <%= f.number_field :amount_of_item %>
 </div>
 
-<div class="field">
-  <%= f.label :cost %>
-  <%= f.text_field :cost %>
+<div class="wrapper">  
+<%= f.submit class: "btn btn-primary btn-md", value: "SAVE ORDER"%>
 </div>
 
-<div class="field">
-  <%= f.label :user_id %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-</div>
-
-<div class="actions">
-  <%= f.submit %>
-</div>
 <% end %>
-
-
-<%= form_tag("/orders", method: "post") do %>
-<div class="field">
-  <%= label_tag "ITEM" %>
-  <%= select_tag 'name', options_for_select(@items.collect{ |u| [u.name] }) %>
 </div>
-
-<div class="field">
-<%= label_tag "COST PER ITEM" %>
-<%= select_tag 'cost', options_for_select(@items.collect{ |u| [u.cost] }) %>
-</div>
-
-<div class="actions">  
-<%= submit_tag("Create") %>
-</div>
-<% end %>
 
 
 
