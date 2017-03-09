@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.string :name
       t.decimal :cost
       t.string :no_item
+      t.attachment :image
 
       t.timestamps
     end
