@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 def set_image_path image
-	File.new( File.join Rails.root, %w(public assets images),image)
+	File.new( File.join Rails.root, %w(public images),image)
 end	
 
 

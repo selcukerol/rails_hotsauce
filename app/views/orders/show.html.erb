@@ -1,6 +1,7 @@
 <table>
 	<tr>
 		<th>Order_id</th>
+			<th>Item</th>
 	      <th>Amount of item (lb)</th>
 	      <th>Cost (USD)</th>
 	      <th>Username</th>
@@ -10,6 +11,7 @@
 	</tr>
 	<tr>
 		<td><%= @order.id %></a></td>
+		<th><%= @order.items.first.name %></th>
 		<td><%= @order.amount_of_item %></td>
 		<td><%= @order.cost %></td>
 		<td><%= @order.user.username %></td>
